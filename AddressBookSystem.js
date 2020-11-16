@@ -84,9 +84,9 @@ class Contact{
 
 
 let contact1 = new Contact("Bibhav", "Singh", "Maharuva", "Ayodhya", "Uttar Pradesh", 224231, "91 5252563522",  "bibsi@gmail.com")
-let contact2 = new Contact("Ashish", "Singh", "Sangam", "Allahabad", "Uttar Pradesh", 224232, "91 5252563555",  "ass@gmail.com")
-let contact3 = new Contact("Anushka", "Singh", "Indira Nagar", "Lucknow", "Uttar Pradesh", 224233, "91 5252563566",  "anu@gmail.com")
-let contact4 = new Contact("Anushka", "Singh", "Indira Nagar", "Lucknow", "Uttar Pradesh", 224233, "91 5252563566",  "anu@gmail.com")
+let contact2 = new Contact("Ashish", "Singh", "Sangam", "Ayodhya", "Uttar Pradesh", 224232, "91 5252563555",  "ass@gmail.com")
+let contact3 = new Contact("Anushka", "Singh", "Hawa Mahal", "Jaipur", "Rajsathan", 224233, "91 5252563566",  "anu@gmail.com")
+let contact4 = new Contact("Sumit", "Singh", "Rajeev Nagar", "Kota", "Rajsathan", 224233, "91 5252563566",  "anu@gmail.com")
 
 
 let addressBookArray = new Array();
@@ -181,8 +181,22 @@ function deleteContact(fname, lname){
         console.log(addressBookArray.toString())
     }
 }
+function searchByCityState(place, choice){
+    let contacts = new Array();
+    if(choice == 1){
+        contacts = addressBookArray.filter(con => con.city === place)
+    }
+    if(choice == 2){
+        contacts = addressBookArray.filter(con => con.state === place)
+    }
+    return contacts;
+}
+function count(counter){
+    return counter + 1;
+}
 
-console.log("---Type---\n1 to view the contact.\n2 to edit a contact\n3 to delete a contact\n4 to count the number of contacts")
+console.log("---Type---\n1 to view the contact.\n2 to edit a contact\n3 to delete a contact"+
+                "\n4 to count the number of contacts\n5 to search by city/state")
 
 let type = prompt("Enter your choice: ")
 if (type == 1) {
@@ -198,10 +212,24 @@ else if (type == 3) {
     deleteContact(f_Name, l_Name)
 }
 else if ( type == 4) {
-    function count(counter){
-        return counter + 1;
+    console.log("Total Number of Contacts: " + addressBookArray.reduce(count, 0))  
+}
+else if( type == 5) {
+    console.log("1. Search By City \n2. Search By State")
+    let input = prompt("Enter your choice:  ")
+    input = parseInt(input)
+    let searchedContacts;
+    switch (input){
+        case 1:
+            let city = prompt("Enter the city name:  ")
+            searchedContacts = searchByCityState(city, 1)
+            console.log("Contacts Found in " + city + " are:  " + searchedContacts.reduce(count, 0))
+            break
+        case 2:
+            let state = prompt("Enter the state name:  ")
+            searchedContacts = searchByCityState(state, 2)
+            console.log("Contacts Found in " + state + " are:  " + searchedContacts.reduce(count,0))
+            break;
     }
-    console.log("Total Number of Contacts: " + addressBookArray.reduce(count, 0))
-    
 }
 
