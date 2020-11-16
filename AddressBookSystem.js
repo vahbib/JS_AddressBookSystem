@@ -1,4 +1,6 @@
 console.log("Welcome To Address Book System Java Script Program");
+
+const prompt = require('prompt-sync')();
 class Contact{
 
     constructor(...params){
@@ -84,13 +86,28 @@ class Contact{
 let contact1 = new Contact("Bibhav", "Singh", "Maharuva", "Ayodhya", "Uttar Pradesh", 224231, "91 5252563522",  "bibsi@gmail.com")
 let contact2 = new Contact("Ashish", "Singh", "Sangam", "Allahabad", "Uttar Pradesh", 224232, "91 5252563555",  "ass@gmail.com")
 let contact3 = new Contact("Anushka", "Singh", "Indira Nagar", "Lucknow", "Uttar Pradesh", 224233, "91 5252563566",  "anu@gmail.com")
+let contact4 = new Contact("Anushka", "Singh", "Indira Nagar", "Lucknow", "Uttar Pradesh", 224233, "91 5252563566",  "anu@gmail.com")
+
 
 let addressBookArray = new Array();
-addressBookArray.push(contact1)
-addressBookArray.push(contact2)
-addressBookArray.push(contact3)
 
-const prompt = require('prompt-sync')();
+function addContact(contact){
+    let duplicateContact;
+    for(let i = 0; i < addressBookArray.length; i++){
+        if(addressBookArray[i].firstName === contact.firstName && addressBookArray[i].lastName === contact.lastName){
+            duplicateContact = addressBookArray[i]
+        }
+    }
+    if(duplicateContact != null)
+        console.log("Can't Add Contact. Dupicate Contact Found.")
+    else
+        addressBookArray.push(contact)
+}
+addContact(contact1)
+addContact(contact2)
+addContact(contact3)
+addContact(contact4)
+
 function findContact(fname, lname){
     let contactToEdit;
     for(let i = 0; i < addressBookArray.length; i++){
