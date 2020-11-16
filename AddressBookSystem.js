@@ -200,7 +200,7 @@ function count(counter){
 }
 
 console.log("---Type---\n1 to view the contact.\n2 to edit a contact\n3 to delete a contact"+
-                "\n4 to count the number of contacts\n5 to search a Contact")
+                "\n4 to count the number of contacts\n5 to search a Contact\n6 to sort address book")
 
 let type = prompt("Enter your choice: ")
 if (type == 1) {
@@ -260,5 +260,14 @@ else if( type == 5) {
             searchedContacts = searchByCityState("", "", state1, 2)
             console.log("Contacts Found in " + state1 +" are:  " + searchedContacts.toString())
             break
+    }
+}
+else if (type == 6) {
+    console.log("Do You Want to Sort the Contacts:  \n1. YES \n2. NO")
+    let inputSort = parseInt(prompt("Enter your choice(1 or 2):  "))
+    if(inputSort == 1){
+        addressBookArray.sort();
+        for(let i = 0; i < addressBookArray.length; i++)
+            console.log(addressBookArray[i].toString())
     }
 }
