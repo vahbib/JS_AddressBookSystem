@@ -216,7 +216,19 @@ else if (type == 3) {
     deleteContact(f_Name, l_Name)
 }
 else if ( type == 4) {
-    console.log("Total Number of Contacts: " + addressBookArray.reduce(count, 0))  
+    console.log("Total Number of Contacts: " + addressBookArray.reduce(count, 0)) 
+    console.log("1. Number Of Contacts by City\n2. Number of contacts by State")
+    let inp = prompt("Enter Your Choice: ")
+    if(inp == 1) {
+        let city = prompt ("Enter City: ")
+        searchedContacts = searchByCityState("","", city, 1)
+        console.log("Contacts Found in " + city + " are:  " + searchedContacts.reduce(count, 0))
+    }
+    else if(inp == 2) {
+        let state = prompt ("Enter State: ")
+        searchedContacts = searchByCityState("","", state, 2)
+        console.log("Contacts Found in " + state + " are:  " + searchedContacts.reduce(count, 0))
+    }
 }
 else if( type == 5) {
     console.log("1. Search Particular Person By City \n2. Search Particular Person By State \n3. Search By City \n4. Search By State")
