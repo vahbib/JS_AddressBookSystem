@@ -165,7 +165,7 @@ function deleteContact(fname, lname){
     }
 }
 
-console.log("---Type---\n1 to view the contact.\n2 to edit a contact\n3 to delete a contact")
+console.log("---Type---\n1 to view the contact.\n2 to edit a contact\n3 to delete a contact\n4 to count the number of contacts")
 
 let type = prompt("Enter your choice: ")
 if (type == 1) {
@@ -180,5 +180,11 @@ else if (type == 3) {
     let l_Name = prompt("Enter the Last Name:  ")
     deleteContact(f_Name, l_Name)
 }
-
+else if ( type == 4) {
+    function count(counter){
+        return counter + 1;
+    }
+    console.log("Total Number of Contacts: " + addressBookArray.reduce(count, 0))
+    
+}
 
