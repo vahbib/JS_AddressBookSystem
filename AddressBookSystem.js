@@ -74,7 +74,20 @@ class Contact{
         }
         else throw "Incorrect Email"
     }
+    toString(){
+        return "\n\nFirstName: " + this.firstName + "\nLastName: " + this.lastName + "\nAddress: " + this.address + "\nCity: " + this.city +
+                "\nState: " + this.state + "\nZip: " + this.zip + "\nPhoneNO: " + this.phoneNo + "\nEmail: " + this.email;
+    }
 }
 
+
 let contact1 = new Contact("Bibhav", "Singh", "Maharuva", "Ayodhya", "Uttar Pradesh", 224231, "91 5252563522",  "bibsi@gmail.com")
-console.log(contact1);
+let contact2 = new Contact("Ashish", "Singh", "Sangam", "Allahabad", "Uttar Pradesh", 224232, "91 5252563555",  "ass@gmail.com")
+let contact3 = new Contact("Anushka", "Singh", "Indira Nagar", "Lucknow", "Uttar Pradesh", 224233, "91 5252563566",  "anu@gmail.com")
+
+let addressBookArray = new Array();
+addressBookArray.push(contact1)
+addressBookArray.push(contact2)
+addressBookArray.push(contact3)
+
+console.log(addressBookArray);
